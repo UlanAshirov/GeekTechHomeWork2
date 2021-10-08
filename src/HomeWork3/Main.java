@@ -1,26 +1,23 @@
 package HomeWork3;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         BankAccount bankAccount = new BankAccount();
+        bankAccount.deposit(20000.0);
+        System.out.println(bankAccount.getAmount());
         while (true) {
-            System.out.println("Введите сумму на вашем счете");
-            double amount = scanner.nextDouble();
-            bankAccount.deposit(amount);
-            if (amount == 0) {
-                break;
-            }
-            System.out.println("Сколько денег вы хотите снять со счета?");
-            int sum = scanner.nextInt();
             try {
-                System.out.println("Ваш счет " + bankAccount.withDraw(sum));
+                System.out.println(bankAccount.deposit(bankAccount.withDraw(6000)));
             } catch (LimitException e) {
                 System.out.println(e.getMessage());
+            }
+            if (bankAccount.getAmount() == 2000) {
+                System.out.println(bankAccount.deposit(bankAccount.getAmount() - 2000));
+                System.out.println("Ваш счет пустой");
+                break;
             }
         }
     }
 }
+
 

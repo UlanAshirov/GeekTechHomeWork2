@@ -7,14 +7,14 @@ public class BankAccount {
         return amount;
     }
 
-    public void deposit(double sum) {
-        amount = sum;
+    public double deposit(double sum) {
+        return amount = sum;
     }
 
     public double withDraw(int sum) throws LimitException {
         if (sum > amount) {
-            throw new LimitException("Запрашиваемая сумма больше чем сумма на счете. Ваш счет: ", amount);
+            throw new LimitException("Запрашиваемая сумма больше чем сумма на счете", amount);
         }
-        return amount - sum;
+        return getAmount() - sum;
     }
 }
