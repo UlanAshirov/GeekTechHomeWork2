@@ -1,5 +1,7 @@
 package HomeWork3;
 
+import javax.naming.NameAlreadyBoundException;
+
 public class BankAccount {
     private double amount;
 
@@ -7,14 +9,18 @@ public class BankAccount {
         return amount;
     }
 
-    public double deposit(double sum) {
-        return amount = sum;
+    public void deposit(double sum) {
+        if (amount == 0) {
+            amount = sum;
+        } else {
+            System.out.println(amount + sum);
+        }
     }
 
-    public double withDraw(int sum) throws LimitException {
+    public void withDraw(int sum) throws LimitException {
         if (sum > amount) {
             throw new LimitException("Запрашиваемая сумма больше чем сумма на счете", amount);
         }
-        return getAmount() - sum;
+            System.out.println(amount = amount - sum);
     }
 }
